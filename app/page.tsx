@@ -89,6 +89,18 @@ export default function Home() {
         {menuOpen && (
           <div className="border-t border-white/[0.06] bg-black px-6 py-6 md:hidden">
             <div className="flex flex-col gap-5 text-sm text-white/60">
-              <a href="#features" onClick={() => setMenuOpen(false)}>Features</a>
-              <a href="#security" onClick={() => setMenuOpen(false)}>Security</a>
-              <a href="#pricing" onClick={() => setMenuOpen(false)}>Pricing
+              <a href="#features" onClick={() => setMenuOpen(false)}>
+  Features
+</a>
+
+<a href="#security" onClick={() => setMenuOpen(false)}>
+  Security
+</a>
+
+<a href="#pricing" onClick={() => setMenuOpen(false)}>
+  Pricing
+</a>
+
+<a href="#faq" onClick={() => setMenuOpen(false)}>
+  FAQ
+</a>
