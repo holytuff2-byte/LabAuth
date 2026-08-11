@@ -327,4 +327,468 @@ export default function Home() {
 
                 {/* Dashboard */}
                 <div className="flex-1 p-5 sm:p-7">
-                  <div className="flex items-center justify-between
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] text-white/30">
+                        Dashboard
+                      </p>
+                      <h3 className="mt-1 text-lg font-bold">
+                        Welcome back.
+                      </h3>
+                    </div>
+
+                    <div className="hidden rounded-lg border border-white/10 px-3 py-2 text-[10px] text-white/40 sm:block">
+                      Last 30 days
+                    </div>
+                  </div>
+
+                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                    {[
+                      ["Applications", "12", "+18%"],
+                      ["Active Licenses", "8,421", "+24%"],
+                      ["Authenticated Users", "3,842", "+12%"],
+                    ].map(([title, value, growth]) => (
+                      <div
+                        key={title}
+                        className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4"
+                      >
+                        <p className="text-[10px] text-white/30">
+                          {title}
+                        </p>
+
+                        <div className="mt-2 flex items-end justify-between">
+                          <span className="text-xl font-bold">
+                            {value}
+                          </span>
+
+                          <span className="text-[9px] text-emerald-400">
+                            {growth}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 grid gap-3 lg:grid-cols-5">
+                    <div className="rounded-xl border border-white/[0.07] p-5 lg:col-span-3">
+                      <p className="text-[10px] text-white/30">
+                        Authentication activity
+                      </p>
+
+                      <div className="mt-8 flex h-28 items-end gap-1">
+                        {[35, 48, 40, 65, 52, 74, 58, 82, 69, 91, 78, 96, 85, 100].map(
+                          (height, index) => (
+                            <div
+                              key={index}
+                              className="flex-1 rounded-t-sm bg-white/10"
+                              style={{ height: `${height}%` }}
+                            />
+                          ),
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-white/[0.07] p-5 lg:col-span-2">
+                      <p className="text-[10px] text-white/30">
+                        System status
+                      </p>
+
+                      <div className="mt-5 space-y-4">
+                        {[
+                          ["API", "Operational"],
+                          ["Authentication", "Operational"],
+                          ["Database", "Operational"],
+                        ].map(([name, status]) => (
+                          <div
+                            key={name}
+                            className="flex items-center justify-between"
+                          >
+                            <span className="text-xs text-white/50">
+                              {name}
+                            </span>
+
+                            <span className="flex items-center gap-1.5 text-[10px] text-emerald-400">
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                              {status}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="border-y border-white/[0.06] bg-white/[0.015]">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-white/[0.06] sm:grid-cols-4">
+          {[
+            ["99.9%", "Platform uptime"],
+            ["<100ms", "API response"],
+            ["24/7", "Monitoring"],
+            ["Secure", "Infrastructure"],
+          ].map(([value, label]) => (
+            <div key={label} className="px-4 py-8 text-center">
+              <p className="text-xl font-bold sm:text-2xl">{value}</p>
+              <p className="mt-1 text-[11px] text-white/30">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section id="features" className="px-5 py-28 sm:px-6 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/30">
+              Powerful infrastructure
+            </p>
+
+            <h2 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+              Everything you need to protect your applications.
+            </h2>
+
+            <p className="mt-5 leading-7 text-white/40">
+              Build, secure and manage your software without building an
+              authentication infrastructure from scratch.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+
+              return (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.07 }}
+                  className="group rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.035]"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] transition group-hover:bg-white group-hover:text-black">
+                    <Icon size={20} />
+                  </div>
+
+                  <h3 className="mt-6 text-lg font-bold">
+                    {feature.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-6 text-white/35">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECURITY */}
+      <section id="security" className="px-5 py-28 sm:px-6">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/30">
+              Security first
+            </p>
+
+            <h2 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+              Your application.
+              <br />
+              Your rules.
+            </h2>
+
+            <p className="mt-6 max-w-xl leading-7 text-white/40">
+              LabAuth gives you control over authentication, licenses,
+              devices and application access from a single platform.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {[
+                "License-based access control",
+                "Hardware identification",
+                "Application-level permissions",
+                "Authentication activity logs",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+                    <Check size={13} />
+                  </div>
+
+                  <span className="text-sm text-white/60">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute inset-10 rounded-full bg-violet-600/10 blur-[100px]" />
+
+            <div className="relative rounded-3xl border border-white/10 bg-[#080808] p-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-white/[0.07] pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black">
+                    <Lock size={18} />
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-bold">Security Monitor</p>
+                    <p className="text-xs text-white/30">
+                      Real-time protection
+                    </p>
+                  </div>
+                </div>
+
+                <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-[10px] text-emerald-400">
+                  Protected
+                </span>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                {[
+                  ["API Authentication", "Active"],
+                  ["License Validation", "Active"],
+                  ["HWID Protection", "Active"],
+                  ["Activity Monitoring", "Active"],
+                ].map(([name, status]) => (
+                  <div
+                    key={name}
+                    className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-4"
+                  >
+                    <span className="text-sm text-white/50">{name}</span>
+
+                    <span className="flex items-center gap-2 text-xs text-emerald-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                      {status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section
+        id="pricing"
+        className="border-y border-white/[0.06] bg-white/[0.015] px-5 py-28 sm:px-6 sm:py-36"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/30">
+              Pricing
+            </p>
+
+            <h2 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+              Start free. Scale when you need.
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-xl text-white/40">
+              Simple plans designed for developers and growing software
+              projects.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+            {plans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative rounded-2xl border p-7 ${
+                  plan.popular
+                    ? "border-white/25 bg-white/[0.06]"
+                    : "border-white/[0.08] bg-[#080808]"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute right-5 top-5 rounded-full bg-white px-3 py-1 text-[10px] font-bold text-black">
+                    POPULAR
+                  </div>
+                )}
+
+                <h3 className="text-xl font-bold">{plan.name}</h3>
+
+                <p className="mt-2 text-sm text-white/35">
+                  {plan.description}
+                </p>
+
+                <div className="mt-8">
+                  <span className="text-4xl font-black">{plan.price}</span>
+
+                  {plan.price !== "Custom" && (
+                    <span className="ml-1 text-sm text-white/30">
+                      / month
+                    </span>
+                  )}
+                </div>
+
+                <a
+                  href="#"
+                  className={`mt-7 flex w-full items-center justify-center rounded-xl py-3 text-sm font-bold transition ${
+                    plan.popular
+                      ? "bg-white text-black hover:bg-white/85"
+                      : "border border-white/10 bg-white/[0.04] hover:bg-white/[0.08]"
+                  }`}
+                >
+                  Get Started
+                </a>
+
+                <div className="mt-7 space-y-3">
+                  {plan.features.map((feature) => (
+                    <div
+                      key={feature}
+                      className="flex items-center gap-3 text-sm text-white/50"
+                    >
+                      <Check size={15} />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="px-5 py-28 sm:px-6 sm:py-36">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/30">
+              FAQ
+            </p>
+
+            <h2 className="mt-4 text-4xl font-black tracking-tight">
+              Questions, answered.
+            </h2>
+          </div>
+
+          <div className="mt-12 space-y-3">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+
+              return (
+                <div
+                  key={faq.question}
+                  className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between px-6 py-5 text-left"
+                  >
+                    <span className="text-sm font-semibold">
+                      {faq.question}
+                    </span>
+
+                    <ChevronDown
+                      size={18}
+                      className={`shrink-0 text-white/40 transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                      >
+                        <p className="px-6 pb-6 text-sm leading-6 text-white/40">
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-5 pb-28 sm:px-6 sm:pb-36">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] px-6 py-16 text-center sm:px-12">
+          <div className="absolute left-1/2 top-0 h-48 w-96 -translate-x-1/2 rounded-full bg-violet-500/10 blur-[100px]" />
+
+          <div className="relative">
+            <h2 className="text-4xl font-black tracking-tight sm:text-5xl">
+              Ready to build with LabAuth?
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-xl text-white/40">
+              Give your applications the authentication infrastructure they
+              deserve.
+            </p>
+
+            <a
+              href="#pricing"
+              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-black transition hover:bg-white/85"
+            >
+              Get Started
+              <ArrowRight size={17} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/[0.06] px-5 py-10 sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-xs font-black text-black">
+                L
+              </div>
+
+              <span className="font-bold">LabAuth</span>
+            </div>
+
+            <p className="mt-3 text-xs text-white/25">
+              Authentication, licensing and security infrastructure.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-6 text-xs text-white/30">
+            <a href="#features" className="hover:text-white">
+              Features
+            </a>
+            <a href="#pricing" className="hover:text-white">
+              Pricing
+            </a>
+            <a href="#faq" className="hover:text-white">
+              FAQ
+            </a>
+            <a href="#" className="hover:text-white">
+              Terms
+            </a>
+            <a href="#" className="hover:text-white">
+              Privacy
+            </a>
+
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="hover:text-white"
+            >
+              <Github size={16} />
+            </a>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-6xl border-t border-white/[0.05] pt-6 text-xs text-white/20">
+          © 2026 LabAuth. All rights reserved.
+        </div>
+      </footer>
+    </main>
+  );
+      }
